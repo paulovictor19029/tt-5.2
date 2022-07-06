@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobs-deploy
+  labels:
+    app: job1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jobs
+  template:
+    metadata:
+      labels:
+        app: jobs
+    spec:
+      containers:
+      - name: jobs-counter
+        image: gcr.io/devops-tt/jobs:v1      
+        ports:
+        - containerPort: 8010
+#        volumeMounts:
+#          - mountPath: /opt/teamtask-anexos
+#            name: tt-persistence-disk-jobs
+#      volumes:
+#        - name: tt-persistence-disk-jobs
+#          persistentVolumeClaim:
+#            claimName: pvc-disk-tt    
