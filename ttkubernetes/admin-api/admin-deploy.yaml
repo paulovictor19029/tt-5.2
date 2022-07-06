@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-deploy
+  labels:
+    app: admin-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin
+  template:
+    metadata:
+      labels:
+        app: admin
+    spec:
+      containers:
+      - name: admin-counter
+        image: gcr.io/devops-tt/admin:v1
+        ports:
+        - containerPort: 8010
