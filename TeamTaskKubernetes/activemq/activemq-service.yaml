@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: active-service
+spec:
+  selector:
+    app: activemq
+  type: ClusterIP
+  ports:
+  - port: 61616
+    targetPort: 61616
