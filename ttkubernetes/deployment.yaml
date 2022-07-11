@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: web-counter
-        image: gcr.io/devops-tt/apache:5.2
+        image: paulov1997/apache:latest
         ports:
         - containerPort: 443
