@@ -18,4 +18,19 @@ spec:
       - name: web-counter
         image: gcr.io/devops-tt/apache:5.2
         ports:
-        - containerPort: 443    
+        - containerPort: 443
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    app: web
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 443
+    targetPort: 443
+  type: LoadBalancer
+  #loadBalancerIP: 34.132.134.93
