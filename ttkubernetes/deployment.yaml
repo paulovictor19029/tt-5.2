@@ -32,5 +32,3 @@ spec:
   ports:
   - port: 443
     targetPort: 443
-  type: LoadBalancer
-  loadBalancerIP: 34.132.134.93
