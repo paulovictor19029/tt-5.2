@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deploy
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web-counter
+        image: gcr.io/devops-tt/apache:5.2
+        ports:
+        - containerPort: 443    
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+  labels:
+    app: web
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 443
+    targetPort: 443
+  type: LoadBalancer
+  loadBalancerIP: 34.132.134.93
